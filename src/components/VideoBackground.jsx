@@ -1,4 +1,5 @@
 import burguer from '../assets/videos/hamburguer.mp4';
+import fallbackImage from '../assets/images/fallback.jpg'; // Adicione uma imagem de fallback
 
 export default function VideoBackground() {
   return (
@@ -7,8 +8,9 @@ export default function VideoBackground() {
         autoPlay
         muted
         loop
-        playsInline // Adicione este atributo
+        playsInline
         className="w-full h-full object-cover"
+        poster={fallbackImage} // Imagem de fallback
       >
         <source src={burguer} type="video/mp4" />
         Seu navegador não suporta vídeos HTML5.
