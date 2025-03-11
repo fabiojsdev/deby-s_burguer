@@ -163,11 +163,11 @@ export default function Cardapio() {
           {cardapio.map((item) => (
             <div key={item.id} className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-white/10">
               {/* Contêiner da Imagem */}
-              <div className="h-64 overflow-hidden">
+              <div className="h-64 w-full flex items-center justify-center overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-contain transform hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="p-6 flex flex-col h-[200px]"> {/* Altura fixa para o contêiner */}
