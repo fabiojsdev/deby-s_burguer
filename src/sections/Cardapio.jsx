@@ -154,9 +154,11 @@ export default function Cardapio() {
     <section id="cardapio" className="py-16 bg-transparent relative">
       <div className="max-w-6xl mx-auto px-4 flex flex-col items-center">
         {/* Título Principal */}
-        <h3 className="text-4xl font-bold text-center text-white mb-16">
-          Cardápio
-        </h3>
+        <div className="w-full flex justify-center mb-20"> {/* Aumentei o margin-bottom para 20 */}
+          <h3 className="text-4xl font-bold text-center text-white">
+            Cardápio
+          </h3>
+        </div>
 
         {/* Grid de Itens do Cardápio */}
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

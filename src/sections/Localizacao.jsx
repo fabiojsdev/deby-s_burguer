@@ -3,14 +3,16 @@ import { FaMapMarkerAlt, FaPhone, FaClock } from "react-icons/fa";
 export default function Localizacao() {
   return (
     <section id="localizacao" className="py-16 bg-black/10 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4 flex flex-col items-center">
         {/* Título da Seção */}
-        <h3 className="text-4xl font-bold text-center text-white mb-12">
-          Localização
-        </h3>
+        <div className="w-full flex justify-center mb-20">
+          <h3 className="text-4xl font-bold text-center text-white">
+            Localização
+          </h3>
+        </div>
 
         {/* Container do Mapa e Informações */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Mapa Integrado */}
           <div className="bg-white/10 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden border border-white/10">
             <iframe
