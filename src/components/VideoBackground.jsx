@@ -1,4 +1,3 @@
-// components/VideoBackground.jsx
 import burguer from '../assets/videos/hamburguer.mp4';
 
 export default function VideoBackground() {
@@ -8,6 +7,7 @@ export default function VideoBackground() {
         autoPlay
         muted
         loop
+        playsInline // Adicione este atributo
         className="w-full h-full object-cover"
       >
         <source src={burguer} type="video/mp4" />
