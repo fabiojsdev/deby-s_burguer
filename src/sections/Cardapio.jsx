@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { FaHamburger, FaBacon, FaLeaf, FaGlassCheers, FaShoppingCart, FaTimes } from 'react-icons/fa';
 import agua from '../assets/images/agua.png';
-import bocaNervosa from '../assets/images/bocanervosa.jpg';
-import CheioDeFome from '../assets/images/cheiodefome.jpg';
+import bocaNervosa from '../assets/images/bocanervosa.png';
+import CheioDeFome from '../assets/images/cheiodefome.png';
 import coca from '../assets/images/coca.png';
 import colosso from '../assets/images/colosso.jpg';
 import frango from '../assets/images/frango.jpg';
