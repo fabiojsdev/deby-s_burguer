@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FaHamburger, FaBacon, FaLeaf, FaGlassCheers, FaShoppingCart, FaTimes } from 'react-icons/fa';
 import agua from '../assets/images/agua.png';
-import bocaNervosa from '../assets/images/bocanervosa.jpg';
+// import bocaNervosa from '../assets/images/bocanervosa.jpg';
 import CheioDeFome from '../assets/images/CheioDeFome.jpg';
 import coca from '../assets/images/coca.png';
 import colosso from '../assets/images/colosso.jpg';
@@ -95,7 +95,7 @@ export default function Cardapio() {
       price: 'R$ 29,00',
       desc: 'Pão australiano, carne, tomate, alface, molho cheddar, maionese verde, picles e cebola defumada.',
       icon: <FaHamburger className="text-4xl text-white/80" />,
-      image: bocaNervosa,
+      // image: bocaNervosa,
     },
     {
       id: 8,
