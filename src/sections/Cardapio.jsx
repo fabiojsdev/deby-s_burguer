@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { FaHamburger, FaBacon, FaLeaf, FaGlassCheers, FaShoppingCart, FaTimes } from 'react-icons/fa';
 import agua from '../assets/images/agua.png';
-// import bocaNervosa from '../assets/images/bocanervosa.jpg';
-// import CheioDeFome from '../assets/images/CheioDeFome.jpg';
+import bocaNervosa from '../assets/images/bocanervosa.jpg';
+import CheioDeFome from '../assets/images/cheiodefome.jpg';
 import coca from '../assets/images/coca.png';
 import colosso from '../assets/images/colosso.jpg';
 import frango from '../assets/images/frango.jpg';
@@ -71,7 +71,7 @@ export default function Cardapio() {
       price: 'R$ 28,00',
       desc: 'Pão com gergelim mesclado, picles, duas carnes, molho de cebola defumada, tomate, alface e maionese verde.',
       icon: <FaHamburger className="text-4xl text-white/80" />,
-      // image: CheioDeFome,
+      image: CheioDeFome,
     },
     {
       id: 5,
@@ -95,7 +95,7 @@ export default function Cardapio() {
       price: 'R$ 29,00',
       desc: 'Pão australiano, carne, tomate, alface, molho cheddar, maionese verde, picles e cebola defumada.',
       icon: <FaHamburger className="text-4xl text-white/80" />,
-      // image: bocaNervosa,
+      image: bocaNervosa,
     },
     {
       id: 8,
