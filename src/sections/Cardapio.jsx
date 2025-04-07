@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { FaHamburger, FaBacon, FaLeaf, FaGlassCheers, FaShoppingCart, FaTimes } from 'react-icons/fa';
 import agua from '../assets/images/agua.png';
-import bocaNervosa from '../assets/images/bocaNervosa.jpg';
-import cheioDeFome from '../assets/images/cheioDeFome.jpg';
+import bocaNervosa from '../assets/images/bocanervosa.jpg';
+import CheioDeFome from '../assets/images/CheioDeFome.jpg';
 import coca from '../assets/images/coca.png';
 import colosso from '../assets/images/colosso.jpg';
 import frango from '../assets/images/frango.jpg';
@@ -10,6 +10,13 @@ import fritasCheddar from '../assets/images/fritasCheddar.jpg';
 import fritasMedia from '../assets/images/fritasMedia.jpg';
 import guarana from '../assets/images/guarana.png';
 import maioverde from '../assets/images/maioVerde.png';
+import tradicional from '../assets/images/tradicional.jpg'
+import BigBurguer from '../assets/images/Bigburguer.jpg'
+import coca2l from '../assets/images/coca2l.webp'
+import guarana2l from '../assets/images/guarana2l.png'
+import combo1 from '../assets/images/combo1.jpg'
+import combo2 from '../assets/images/combo2.jpg'
+import combo3 from '../assets/images/combo3.jpg'
 
 export default function Cardapio() {
   const [carrinho, setCarrinho] = useState(() => {
@@ -30,17 +37,52 @@ export default function Cardapio() {
   }, [carrinho]);
 
   const cardapio = [
-    // Hambúrgueres
+    // Combos
     {
       id: 1,
+      name: 'Combo 1',
+      price: 'R$ 35,00',
+      desc: 'Combo com 1 hamburguer + 1 batata frita + 1 refrigerante 350ml.',
+      icon: <FaHamburger className="text-4xl text-white/80" />,
+      image: combo1,
+    },
+    {
+      id: 2,
+      name: 'Combo 2',
+      price: 'R$ 45,00',
+      desc: 'Combo com 2 hamburguers + 1 porção de batata frita grande + 2 refrigerantes 350ml.',
+      icon: <FaHamburger className="text-4xl text-white/80" />,
+      image: combo2,
+    },
+    {
+      id: 3,
+      name: 'Combo 3',
+      price: 'R$ 60,00',
+      desc: 'Combo com 3 hamburguers + 2 porções de batata frita grande + 3 refrigerantes 350ml.',
+      icon: <FaHamburger className="text-4xl text-white/80" />,
+      image: combo3,
+    },
+
+     //Hambúrguers
+
+    {
+      id: 4,
       name: 'Cheio de Fome',
       price: 'R$ 28,00',
       desc: 'Pão com gergelim mesclado, picles, duas carnes, molho de cebola defumada, tomate, alface e maionese verde.',
       icon: <FaHamburger className="text-4xl text-white/80" />,
-      image: cheioDeFome,
+      image: CheioDeFome,
     },
     {
-      id: 2,
+      id: 5,
+      name: 'Tradicional',
+      price: 'R$ 22,00',
+      desc: 'Pão comum, carne, tomate, alface e maionese verde.',
+      icon: <FaHamburger className="text-4xl text-white/80" />,
+      image: tradicional,
+    },
+    {
+      id: 6,
       name: 'Colosso',
       price: 'R$ 30,00',
       desc: 'Pão francês rústico, carne hambúrguer de frango, picles, tomate, alface, cheddar, molho de alho e cebola rocha.',
@@ -48,7 +90,7 @@ export default function Cardapio() {
       image: colosso,
     },
     {
-      id: 3,
+      id: 7,
       name: 'Boca Nervosa',
       price: 'R$ 29,00',
       desc: 'Pão australiano, carne, tomate, alface, molho cheddar, maionese verde, picles e cebola defumada.',
@@ -56,17 +98,25 @@ export default function Cardapio() {
       image: bocaNervosa,
     },
     {
-      id: 4,
+      id: 8,
       name: 'Hambúrguer de Frango',
       price: 'R$ 23,00',
       desc: 'Pão com gergelim, frango, tomate, alface, cebola caramelizada, molho cheddar, picles e maionese verde.',
       icon: <FaHamburger className="text-4xl text-white/80" />,
       image: frango,
     },
+    {
+      id: 9,
+      name: 'Big Burguer',
+      price: 'R$ 33,00',
+      desc: 'Pão com gergelim, carne, quejo, tomate, alface, molho cheddar, picles e maionese verde.',
+      icon: <FaHamburger className="text-4xl text-white/80" />,
+      image: BigBurguer,
+    },
 
     // Acompanhamentos
     {
-      id: 5,
+      id: 10,
       name: 'Porção de Batata Média',
       price: 'R$ 15,00',
       desc: 'Batata frita crocante, servida em porção média.',
@@ -74,7 +124,7 @@ export default function Cardapio() {
       image: fritasMedia,
     },
     {
-      id: 6,
+      id: 11,
       name: 'Porção de Batata com Bacon e Molho Cheddar',
       price: 'R$ 25,00',
       desc: 'Batata frita com bacon crocante e molho cheddar cremoso.',
@@ -82,7 +132,7 @@ export default function Cardapio() {
       image: fritasCheddar,
     },
     {
-      id: 7,
+      id: 12,
       name: 'Pote de Maionese Verde (250ml)',
       price: 'R$ 10,00',
       desc: 'Maionese verde artesanal, perfeita para acompanhar seus lanches.',
@@ -92,23 +142,39 @@ export default function Cardapio() {
 
     // Bebidas
     {
-      id: 8,
+      id: 13,
+      name: 'Coca-Cola 2L',
+      price: 'R$ 15,00',
+      desc: 'Garrafa 2l.',
+      icon: <FaGlassCheers className="text-4xl text-white/80" />,
+      image: coca2l,
+    },
+    {
+      id: 14,
+      name: 'Guaraná 2L',
+      price: 'R$ 12,00',
+      desc: 'Garrafa de 2l.',
+      icon: <FaGlassCheers className="text-4xl text-white/80" />,
+      image: guarana2l,
+    },
+    {
+      id: 15,
       name: 'Coca-Cola Lata',
-      price: 'R$ 5,00',
+      price: 'R$ 4,00',
       desc: 'Lata de 350ml.',
       icon: <FaGlassCheers className="text-4xl text-white/80" />,
       image: coca,
     },
     {
-      id: 9,
+      id: 16,
       name: 'Guaraná Lata',
-      price: 'R$ 4,00',
+      price: 'R$ 3,50',
       desc: 'Lata de 350ml.',
       icon: <FaGlassCheers className="text-4xl text-white/80" />,
       image: guarana,
     },
     {
-      id: 10,
+      id: 17,
       name: 'Água',
       price: 'R$ 3,00',
       desc: 'Garrafa de 500ml.',
@@ -118,8 +184,8 @@ export default function Cardapio() {
   ];
 
   const adicionarAoCarrinho = (item) => {
-    if (carrinho.length >= 5) {
-      alert('O carrinho está cheio! Limite de 5 itens.');
+    if (carrinho.length >= 10) {
+      alert('O carrinho está cheio! Limite de itens.');
       return;
     }
     setCarrinho([...carrinho, { ...item, uniqueId: Date.now() }]);
