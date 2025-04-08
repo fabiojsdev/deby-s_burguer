@@ -318,26 +318,30 @@ export default function Cardapio() {
           </div>
         )}
 
-        {/* Grid de Itens do Cardápio */}
+        {/* Grid de Itens do Cardápio - Área com ajustes principais */}
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {itensFiltrados.map((item) => (
             <div 
               key={item.id} 
-              className="bg-white/5 backdrop-blur-sm rounded-lg shadow-md overflow-hidden transition-all duration-200 border border-white/10 hover:border-yellow-400/30 group"
+              className="bg-white/5 backdrop-blur-sm rounded-lg shadow-md overflow-hidden transition-all duration-200 border border-white/10 hover:border-yellow-400/30 group flex flex-col"
             >
-              <div className="h-48 w-full flex items-center justify-center overflow-hidden bg-black/10 relative">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-end p-3">
-                  <p className="text-white text-xs">{item.desc}</p>
+              {/* Container da imagem com proporção fixa */}
+              <div className="relative pt-[100%] w-full"> {/* Proporção 1:1 (quadrado) */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/10 overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-end p-3">
+                    <p className="text-white text-xs">{item.desc}</p>
+                  </div>
                 </div>
               </div>
               
-              <div className="p-4 flex flex-col">
+              {/* Informações do produto */}
+              <div className="p-4 flex flex-col flex-grow">
                 <div className="flex items-center justify-between mb-2">
                   <h4 className="text-base font-bold text-white truncate">{item.name}</h4>
                   <div className="text-white/80">
@@ -345,7 +349,7 @@ export default function Cardapio() {
                   </div>
                 </div>
                 
-                <div className="flex justify-between items-center mt-2">
+                <div className="flex justify-between items-center mt-auto">
                   <span className="text-base font-bold text-yellow-400">
                     {item.price}
                   </span>
