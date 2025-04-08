@@ -27,7 +27,7 @@ const cardapio = [
     name: 'Combo 1',
     price: 'R$ 35,00',
     desc: 'Combo com 1 hamburguer + 1 batata frita + 1 refrigerante 350ml.',
-    icon: <FaHamburger className="text-4xl text-white/80" />,
+    icon: <FaHamburger className="text-2xl text-white/80" />,
     image: combo1,
     categoria: 'combos'
   },
@@ -36,7 +36,7 @@ const cardapio = [
     name: 'Combo 2',
     price: 'R$ 45,00',
     desc: 'Combo com 2 hamburguers + 1 porção de batata frita grande + 2 refrigerantes 350ml.',
-    icon: <FaHamburger className="text-4xl text-white/80" />,
+    icon: <FaHamburger className="text-2xl text-white/80" />,
     image: combo2,
     categoria: 'combos'
   },
@@ -45,7 +45,7 @@ const cardapio = [
     name: 'Combo 3',
     price: 'R$ 60,00',
     desc: 'Combo com 3 hamburguers + 2 porções de batata frita grande + 3 refrigerantes 350ml.',
-    icon: <FaHamburger className="text-4xl text-white/80" />,
+    icon: <FaHamburger className="text-2xl text-white/80" />,
     image: combo3,
     categoria: 'combos'
   },
@@ -56,7 +56,7 @@ const cardapio = [
     name: 'Cheio de Fome',
     price: 'R$ 28,00',
     desc: 'Pão com gergelim mesclado, picles, duas carnes, molho de cebola defumada, tomate, alface e maionese verde.',
-    icon: <FaHamburger className="text-4xl text-white/80" />,
+    icon: <FaHamburger className="text-2xl text-white/80" />,
     image: CheioDeFome,
     categoria: 'hamburguers'
   },
@@ -65,7 +65,7 @@ const cardapio = [
     name: 'Tradicional',
     price: 'R$ 22,00',
     desc: 'Pão comum, carne, tomate, alface e maionese verde.',
-    icon: <FaHamburger className="text-4xl text-white/80" />,
+    icon: <FaHamburger className="text-2xl text-white/80" />,
     image: tradicional,
     categoria: 'hamburguers'
   },
@@ -74,7 +74,7 @@ const cardapio = [
     name: 'Colosso',
     price: 'R$ 30,00',
     desc: 'Pão francês rústico, carne hambúrguer de frango, picles, tomate, alface, cheddar, molho de alho e cebola rocha.',
-    icon: <FaHamburger className="text-4xl text-white/80" />,
+    icon: <FaHamburger className="text-2xl text-white/80" />,
     image: colosso,
     categoria: 'hamburguers'
   },
@@ -83,7 +83,7 @@ const cardapio = [
     name: 'Boca Nervosa',
     price: 'R$ 29,00',
     desc: 'Pão australiano, carne, tomate, alface, molho cheddar, maionese verde, picles e cebola defumada.',
-    icon: <FaHamburger className="text-4xl text-white/80" />,
+    icon: <FaHamburger className="text-2xl text-white/80" />,
     image: bocaNervosa,
     categoria: 'hamburguers'
   },
@@ -92,7 +92,7 @@ const cardapio = [
     name: 'Hambúrguer de Frango',
     price: 'R$ 23,00',
     desc: 'Pão com gergelim, frango, tomate, alface, cebola caramelizada, molho cheddar, picles e maionese verde.',
-    icon: <FaHamburger className="text-4xl text-white/80" />,
+    icon: <FaHamburger className="text-2xl text-white/80" />,
     image: frango,
     categoria: 'hamburguers'
   },
@@ -101,7 +101,7 @@ const cardapio = [
     name: 'Big Burguer',
     price: 'R$ 33,00',
     desc: 'Pão com gergelim, carne, quejo, tomate, alface, molho cheddar, picles e maionese verde.',
-    icon: <FaHamburger className="text-4xl text-white/80" />,
+    icon: <FaHamburger className="text-2xl text-white/80" />,
     image: BigBurguer,
     categoria: 'hamburguers'
   },
@@ -112,7 +112,7 @@ const cardapio = [
     name: 'Porção de Batata Média',
     price: 'R$ 15,00',
     desc: 'Batata frita crocante, servida em porção média.',
-    icon: <FaBacon className="text-4xl text-white/80" />,
+    icon: <FaBacon className="text-2xl text-white/80" />,
     image: fritasMedia,
     categoria: 'acompanhamentos'
   },
@@ -121,7 +121,7 @@ const cardapio = [
     name: 'Porção de Batata com Bacon e Molho Cheddar',
     price: 'R$ 25,00',
     desc: 'Batata frita com bacon crocante e molho cheddar cremoso.',
-    icon: <FaBacon className="text-4xl text-white/80" />,
+    icon: <FaBacon className="text-2xl text-white/80" />,
     image: fritasCheddar,
     categoria: 'acompanhamentos'
   },
@@ -130,7 +130,7 @@ const cardapio = [
     name: 'Pote de Maionese Verde (250ml)',
     price: 'R$ 10,00',
     desc: 'Maionese verde artesanal, perfeita para acompanhar seus lanches.',
-    icon: <FaLeaf className="text-4xl text-white/80" />,
+    icon: <FaLeaf className="text-2xl text-white/80" />,
     image: maioverde,
     categoria: 'acompanhamentos'
   },
@@ -141,7 +141,7 @@ const cardapio = [
     name: 'Coca-Cola 2L',
     price: 'R$ 15,00',
     desc: 'Garrafa 2l.',
-    icon: <FaGlassCheers className="text-4xl text-white/80" />,
+    icon: <FaGlassCheers className="text-2xl text-white/80" />,
     image: coca2l,
     categoria: 'bebidas'
   },
@@ -150,7 +150,7 @@ const cardapio = [
     name: 'Guaraná 2L',
     price: 'R$ 12,00',
     desc: 'Garrafa de 2l.',
-    icon: <FaGlassCheers className="text-4xl text-white/80" />,
+    icon: <FaGlassCheers className="text-2xl text-white/80" />,
     image: guarana2l,
     categoria: 'bebidas'
   },
@@ -159,7 +159,7 @@ const cardapio = [
     name: 'Coca-Cola Lata',
     price: 'R$ 4,00',
     desc: 'Lata de 350ml.',
-    icon: <FaGlassCheers className="text-4xl text-white/80" />,
+    icon: <FaGlassCheers className="text-2xl text-white/80" />,
     image: coca,
     categoria: 'bebidas'
   },
@@ -168,7 +168,7 @@ const cardapio = [
     name: 'Guaraná Lata',
     price: 'R$ 3,50',
     desc: 'Lata de 350ml.',
-    icon: <FaGlassCheers className="text-4xl text-white/80" />,
+    icon: <FaGlassCheers className="text-2xl text-white/80" />,
     image: guarana,
     categoria: 'bebidas'
   },
@@ -177,7 +177,7 @@ const cardapio = [
     name: 'Água',
     price: 'R$ 3,00',
     desc: 'Garrafa de 500ml.',
-    icon: <FaGlassCheers className="text-4xl text-white/80" />,
+    icon: <FaGlassCheers className="text-2xl text-white/80" />,
     image: agua,
     categoria: 'bebidas'
   },
@@ -249,30 +249,30 @@ export default function Cardapio() {
   const itensFiltrados = filtrarItens();
 
   return (
-    <section id="cardapio" className="py-16 bg-gradient-to-b from-black to-black/90">
+    <section id="cardapio" className="py-12 bg-gradient-to-b from-black to-black/90">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center">
         {/* Título Principal */}
-        <div className="w-full text-center mb-12">
-          <h2 className="text-5xl font-bold text-yellow-400 mb-2">Cardápio</h2>
-          <div className="w-24 h-1 bg-yellow-400 mx-auto mt-4"></div>
+        <div className="w-full text-center mb-8">
+          <h2 className="text-3xl font-bold text-yellow-400 mb-1">Cardápio</h2>
+          <div className="w-20 h-0.5 bg-yellow-400 mx-auto mt-2"></div>
         </div>
 
         {/* Barra de Pesquisa e Filtros */}
-        <div className="w-full mb-8">
-          <div className="relative max-w-2xl mx-auto">
+        <div className="w-full mb-6">
+          <div className="relative max-w-xl mx-auto">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <FaSearch className="text-gray-400" />
+              <FaSearch className="text-gray-400 text-sm" />
             </div>
             <input
               type="text"
-              placeholder="Buscar item no cardápio..."
-              className="block w-full pl-10 pr-3 py-3 bg-white/10 border border-white/20 rounded-full text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+              placeholder="Buscar item..."
+              className="block w-full pl-9 pr-3 py-2 text-sm bg-white/10 border border-white/20 rounded-full text-white placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-yellow-400 focus:border-transparent"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <button 
               onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
-              className="md:hidden absolute right-3 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white"
+              className="md:hidden absolute right-2 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white text-sm"
             >
               <FaFilter />
             </button>
@@ -280,15 +280,15 @@ export default function Cardapio() {
         </div>
 
         {/* Filtros por Categoria */}
-        <div className={`${mobileFiltersOpen ? 'block' : 'hidden'} md:block w-full mb-12`}>
-          <div className="flex flex-wrap justify-center gap-3">
+        <div className={`${mobileFiltersOpen ? 'block' : 'hidden'} md:block w-full mb-8`}>
+          <div className="flex flex-wrap justify-center gap-2">
             {['todos', 'combos', 'hamburguers', 'acompanhamentos', 'bebidas'].map((categoria) => (
               <button
                 key={categoria}
                 onClick={() => setCategoriaAtiva(categoria)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
                   categoriaAtiva === categoria 
-                    ? 'bg-yellow-400 text-black shadow-lg' 
+                    ? 'bg-yellow-400 text-black shadow-md' 
                     : 'bg-white/10 text-white hover:bg-white/20'
                 }`}
               >
@@ -304,68 +304,54 @@ export default function Cardapio() {
 
         {/* Mensagem quando não há resultados */}
         {itensFiltrados.length === 0 && (
-          <div className="w-full text-center py-16">
-            <p className="text-white/70 text-xl mb-4">Nenhum item encontrado</p>
+          <div className="w-full text-center py-12">
+            <p className="text-white/70 text-lg mb-3">Nenhum item encontrado</p>
             <button
               onClick={() => {
                 setSearchTerm('');
                 setCategoriaAtiva('todos');
               }}
-              className="text-yellow-400 hover:text-yellow-300 text-sm font-medium underline"
+              className="text-yellow-400 hover:text-yellow-300 text-xs font-medium"
             >
-              Limpar filtros e ver todos os itens
+              Limpar filtros
             </button>
           </div>
         )}
 
         {/* Grid de Itens do Cardápio */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {itensFiltrados.map((item) => (
             <div 
               key={item.id} 
-              className={`bg-white/5 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition-all duration-300 border ${
-                item.destaque 
-                  ? 'border-yellow-400/40 hover:border-yellow-400/70' 
-                  : 'border-white/10 hover:border-white/20'
-              } relative group`}
+              className="bg-white/5 backdrop-blur-sm rounded-lg shadow-md overflow-hidden transition-all duration-200 border border-white/10 hover:border-yellow-400/30 group"
             >
-              {item.destaque && (
-                <div className="absolute top-3 right-3 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full z-10">
-                  DESTAQUE
-                </div>
-              )}
-              
-              <div className="h-64 w-full flex items-center justify-center overflow-hidden bg-black/10 relative">
+              <div className="h-48 w-full flex items-center justify-center overflow-hidden bg-black/10 relative">
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <p className="text-white text-sm">{item.desc}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-end p-3">
+                  <p className="text-white text-xs">{item.desc}</p>
                 </div>
               </div>
               
-              <div className="p-5 flex flex-col">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-xl font-bold text-white truncate">{item.name}</h4>
-                  <div className={`${item.destaque ? 'text-yellow-400' : 'text-white/80'}`}>
+              <div className="p-4 flex flex-col">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="text-base font-bold text-white truncate">{item.name}</h4>
+                  <div className="text-white/80">
                     {item.icon}
                   </div>
                 </div>
                 
-                <div className="flex justify-between items-center mt-4">
-                  <span className={`text-xl font-bold ${item.destaque ? 'text-yellow-400' : 'text-white'}`}>
+                <div className="flex justify-between items-center mt-2">
+                  <span className="text-base font-bold text-yellow-400">
                     {item.price}
                   </span>
                   <button
                     onClick={() => adicionarAoCarrinho(item)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all active:scale-95 flex items-center gap-2 ${
-                      item.destaque
-                        ? 'bg-yellow-400 hover:bg-yellow-500 text-black'
-                        : 'bg-white/10 hover:bg-white/20 text-white'
-                    }`}
+                    className="px-3 py-1 rounded-full text-xs font-medium transition-all active:scale-95 bg-white/10 hover:bg-white/20 text-white"
                   >
                     Adicionar
                   </button>
@@ -377,23 +363,23 @@ export default function Cardapio() {
       </div>
 
       {/* Carrinho Flutuante */}
-      <div className="fixed bottom-6 right-6 z-50 transition-all duration-300">
+      <div className="fixed bottom-4 right-4 z-50 transition-all duration-200">
         {carrinhoAberto ? (
-          <div className="bg-black/95 backdrop-blur-lg rounded-xl shadow-2xl border border-yellow-400/30 w-80 transform transition-all duration-300">
-            <div className="p-5">
-              <div className="flex items-center justify-between mb-5 border-b border-white/10 pb-3">
-                <h4 className="text-xl font-bold text-white flex items-center gap-2">
-                  <FaShoppingCart className="text-yellow-400" /> 
+          <div className="bg-black/95 backdrop-blur-md rounded-lg shadow-lg border border-yellow-400/20 w-72">
+            <div className="p-4">
+              <div className="flex items-center justify-between mb-4 border-b border-white/10 pb-2">
+                <h4 className="text-base font-bold text-white flex items-center gap-1">
+                  <FaShoppingCart className="text-yellow-400 text-sm" /> 
                   <span>Meu Pedido</span>
                   {carrinho.length > 0 && (
-                    <span className="bg-yellow-400 text-black text-xs font-bold rounded-full px-2 py-1">
-                      {carrinho.length} {carrinho.length === 1 ? 'item' : 'itens'}
+                    <span className="bg-yellow-400 text-black text-xs font-bold rounded-full px-1.5 py-0.5 ml-1">
+                      {carrinho.length}
                     </span>
                   )}
                 </h4>
                 <button
                   onClick={() => setCarrinhoAberto(false)}
-                  className="text-white/70 hover:text-white transition p-1"
+                  className="text-white/70 hover:text-white transition text-sm"
                 >
                   <FaTimes />
                 </button>
@@ -401,16 +387,16 @@ export default function Cardapio() {
 
               {carrinho.length > 0 ? (
                 <>
-                  <div className="max-h-64 overflow-y-auto mb-5 space-y-3 pr-2">
+                  <div className="max-h-56 overflow-y-auto mb-4 space-y-2 pr-1">
                     {carrinho.map((item) => (
-                      <div key={item.uniqueId} className="flex items-center justify-between gap-3 bg-white/5 p-3 rounded-lg">
+                      <div key={item.uniqueId} className="flex items-center justify-between gap-2 bg-white/5 p-2 rounded-md">
                         <div className="flex-1 min-w-0">
-                          <p className="text-white font-medium truncate">{item.name}</p>
-                          <p className="text-yellow-400 text-sm">{item.price}</p>
+                          <p className="text-white text-sm font-medium truncate">{item.name}</p>
+                          <p className="text-yellow-400 text-xs">{item.price}</p>
                         </div>
                         <button
                           onClick={() => removerDoCarrinho(item.uniqueId)}
-                          className="text-red-400 hover:text-red-300 transition p-1"
+                          className="text-red-400 hover:text-red-300 transition text-xs"
                         >
                           <FaTimes />
                         </button>
@@ -418,55 +404,53 @@ export default function Cardapio() {
                     ))}
                   </div>
 
-                  <div className="border-t border-white/10 pt-4 mb-4">
-                    <div className="flex justify-between items-center">
-                      <span className="text-white font-bold">Subtotal:</span>
+                  <div className="border-t border-white/10 pt-3 mb-3">
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-white font-medium">Subtotal:</span>
                       <span className="text-white">{calcularTotal()}</span>
                     </div>
-                    <div className="flex justify-between items-center mt-1">
-                      <span className="text-white/70 text-sm">Taxa de entrega:</span>
-                      <span className="text-white/70 text-sm">A calcular</span>
+                    <div className="flex justify-between items-center text-xs mt-1">
+                      <span className="text-white/70">Taxa de entrega:</span>
+                      <span className="text-white/70">A calcular</span>
                     </div>
-                    <div className="flex justify-between items-center mt-3 text-lg font-bold">
-                      <span className="text-white">Total estimado:</span>
+                    <div className="flex justify-between items-center text-base font-bold mt-2">
+                      <span className="text-white">Total:</span>
                       <span className="text-yellow-400">{calcularTotal()}</span>
                     </div>
                   </div>
 
                   <button
                     onClick={gerarLinkWhatsApp}
-                    className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-lg mt-2"
+                    className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-3 rounded-lg flex items-center justify-center gap-1 transition-all active:scale-[0.98] text-sm"
                   >
-                    <FaWhatsapp className="text-xl" /> Finalizar pelo WhatsApp
+                    <FaWhatsapp className="text-base" /> Finalizar
                   </button>
                 </>
               ) : (
-                <div className="text-center py-8">
-                  <p className="text-white/70 mb-4">Seu carrinho está vazio</p>
+                <div className="text-center py-6">
+                  <p className="text-white/70 text-sm mb-3">Seu carrinho está vazio</p>
                   <button
                     onClick={() => setCarrinhoAberto(false)}
-                    className="text-yellow-400 hover:text-yellow-300 transition text-sm font-medium"
+                    className="text-yellow-400 hover:text-yellow-300 transition text-xs font-medium"
                   >
-                    Continuar comprando
+                    Ver cardápio
                   </button>
                 </div>
               )}
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-end gap-2">
-            <button
-              onClick={() => setCarrinhoAberto(true)}
-              className="bg-gradient-to-br from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-black p-4 rounded-full transition-all relative shadow-lg active:scale-95 group"
-            >
-              <FaShoppingCart className="text-xl" />
-              {carrinho.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center animate-pulse">
-                  {carrinho.length}
-                </span>
-              )}
-            </button>
-          </div>
+          <button
+            onClick={() => setCarrinhoAberto(true)}
+            className="bg-yellow-400 hover:bg-yellow-500 text-black p-3 rounded-full transition-all relative shadow-md active:scale-95"
+          >
+            <FaShoppingCart className="text-base" />
+            {carrinho.length > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center animate-pulse">
+                {carrinho.length}
+              </span>
+            )}
+          </button>
         )}
       </div>
     </section>
