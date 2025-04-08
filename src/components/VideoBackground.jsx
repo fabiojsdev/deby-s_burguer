@@ -3,24 +3,41 @@ import burguer from '../assets/videos/hamburguer.mp4';
 import fallbackImage from '../assets/images/fallback.jpg';
 
 export default function VideoBackground() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isVideoSupported, setIsVideoSupported] = useState(true);
 
   useEffect(() => {
-    // Função para detectar se o dispositivo é mobile
+    // Tenta reproduzir o vídeo programaticamente (para contornar bloqueios de autoplay)
+    const video = document.createElement('video');
+    video.muted = true;
+    video.playsInline = true;
+    video.autoplay = true;
+    video.src = burguer;
+
+    video.play()
+      .then(() => {
+        // Vídeo suportado
+        setIsVideoSupported(true);
+      })
+      .catch(() => {
+        // Vídeo não suportado ou autoplay bloqueado
+        setIsVideoSupported(false);
+      });
+
+    // Verifica também se é um dispositivo móvel com tela pequena
     const checkIfMobile = () => {
-      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      const isMobileView = window.matchMedia("(max-width: 768px)").matches;
+      const isMobileAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
       );
-      setIsMobile(isMobileDevice);
+      
+      if (isMobileView || isMobileAgent) {
+        console.log("Dispositivo móvel detectado - otimizando vídeo");
+      }
     };
 
-    // Verifica se é mobile ao carregar o componente
     checkIfMobile();
-
-    // Atualiza o estado se a janela for redimensionada
     window.addEventListener('resize', checkIfMobile);
 
-    // Limpa o event listener ao desmontar o componente
     return () => {
       window.removeEventListener('resize', checkIfMobile);
     };
@@ -28,17 +45,27 @@ export default function VideoBackground() {
 
   return (
     <div className="fixed inset-0 w-full h-full -z-10">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="w-full h-full object-cover"
-        poster={isMobile ? fallbackImage : undefined} // Aplica o fallback apenas em mobile
-      >
-        <source src={burguer} type="video/mp4" />
-        Seu navegador não suporta vídeos HTML5.
-      </video>
+      {isVideoSupported ? (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          // Fallback universal se o vídeo não carregar
+          poster={fallbackImage}
+        >
+          <source src={burguer} type="video/mp4" />
+          Seu navegador não suporta vídeos HTML5.
+        </video>
+      ) : (
+        // Fallback para imagem se o vídeo não for suportado
+        <img 
+          src={fallbackImage} 
+          alt="Background substituto" 
+          className="w-full h-full object-cover" 
+        />
+      )}
       {/* Overlay escuro para melhorar a legibilidade */}
       <div className="absolute inset-0 bg-black/50"></div>
     </div>
