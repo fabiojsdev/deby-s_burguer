@@ -5,6 +5,8 @@ import Cardapio from "./sections/Cardapio";
 import Localizacao from "./sections/Localizacao";
 import Footer from "./sections/Footer";
 import BackToTop from "./components/BackToTop"; 
+import { Analytics } from "@vercel/analytics/react";
+
 
 
 
@@ -18,7 +20,7 @@ export default function App() {
       <Localizacao />
       <Footer />
       <BackToTop />
-      
+      <Analytics/>
     </div>
   );
 }
