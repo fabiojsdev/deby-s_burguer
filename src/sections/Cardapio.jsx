@@ -420,7 +420,7 @@ export default function Cardapio() {
             <input
               id="search-input"
               type="text"
-              placeholder="Buscar item (ex: agua, hamburguer, coca)..."
+              placeholder="Buscar item..."
               className="block w-full pl-9 pr-10 py-2 text-sm bg-white/10 border border-white/20 rounded-full text-white placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-yellow-400 focus:border-transparent"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
