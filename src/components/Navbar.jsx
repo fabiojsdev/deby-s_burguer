@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FaHamburger, FaWhatsapp } from 'react-icons/fa';
+import { FaHamburger, FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import { Link } from 'react-scroll';
 
 export default function Navbar() {
@@ -63,7 +63,7 @@ export default function Navbar() {
           </Link>
 
           {/* Menu Desktop */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <NavLink to="hero" active={activeLink === 'hero'} onClick={() => handleLinkClick('hero')}>
               Home
             </NavLink>
@@ -73,14 +73,28 @@ export default function Navbar() {
             <NavLink to="localizacao" active={activeLink === 'localizacao'} onClick={() => handleLinkClick('localizacao')}>
               Localização
             </NavLink>
-            <a 
-              href="https://wa.me/5511949981809" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-all"
-            >
-              <FaWhatsapp className="text-lg" /> Pedir Agora
-            </a>
+            
+            {/* Ícones de Redes Sociais */}
+            <div className="flex items-center gap-4 ml-4">
+              <a 
+                href="https://wa.me/5511949981809" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white hover:text-green-400 transition-colors duration-300 text-xl"
+                aria-label="WhatsApp"
+              >
+                <FaWhatsapp />
+              </a>
+              <a 
+                href="https://www.instagram.com/hamburgue_da_deby/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white hover:text-pink-500 transition-colors duration-300 text-xl"
+                aria-label="Instagram"
+              >
+                <FaInstagram />
+              </a>
+            </div>
           </div>
 
           {/* Botão Mobile */}
@@ -108,15 +122,30 @@ export default function Navbar() {
           <MobileNavLink to="localizacao" active={activeLink === 'localizacao'} onClick={toggleMenu}>
             Localização
           </MobileNavLink>
-          <a 
-            href="https://wa.me/5511949981809" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-base font-medium transition-all mt-4"
-            onClick={toggleMenu}
-          >
-            <FaWhatsapp className="text-xl" /> Pedir pelo WhatsApp
-          </a>
+          
+          {/* Redes Sociais Mobile */}
+          <div className="flex items-center gap-6 mt-6">
+            <a 
+              href="https://wa.me/5511949981809" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white hover:text-green-400 transition-colors duration-300 text-2xl"
+              aria-label="WhatsApp"
+              onClick={toggleMenu}
+            >
+              <FaWhatsapp />
+            </a>
+            <a 
+              href="https://instagram.com/seuinstagram" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white hover:text-pink-500 transition-colors duration-300 text-2xl"
+              aria-label="Instagram"
+              onClick={toggleMenu}
+            >
+              <FaInstagram />
+            </a>
+          </div>
         </div>
       </div>
     </nav>

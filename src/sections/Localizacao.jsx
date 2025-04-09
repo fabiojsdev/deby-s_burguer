@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaMapMarkerAlt, FaPhone, FaClock, FaWhatsapp, FaCar, FaMotorcycle } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhone, FaClock, FaWhatsapp, FaInstagram } from "react-icons/fa";
 
 export default function Localizacao() {
   const [isMapLoaded, setIsMapLoaded] = useState(false);
@@ -41,7 +41,7 @@ export default function Localizacao() {
           <div className="bg-white/5 backdrop-blur-sm rounded-xl shadow-2xl p-8 border border-white/10">
             <h4 className="text-2xl font-bold mb-8 text-white relative pb-2">
               <span className="relative z-10">Informações</span>
-             </h4>
+            </h4>
 
             <div className="space-y-6">
               {/* Endereço */}
@@ -80,6 +80,36 @@ export default function Localizacao() {
                       className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium transition-all"
                     >
                       <FaPhone /> Ligar
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Redes Sociais */}
+              <div className="flex items-start gap-4">
+                <div className="p-2 bg-yellow-400/20 rounded-full">
+                  <FaInstagram className="text-yellow-400 text-xl" />
+                </div>
+                <div>
+                  <p className="font-bold text-white">Redes Sociais</p>
+                  <div className="flex gap-3 mt-2">
+                    <a 
+                      href="https://wa.me/5511949981809" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full transition-all"
+                      aria-label="WhatsApp"
+                    >
+                      <FaWhatsapp className="text-lg" />
+                    </a>
+                    <a 
+                      href="https://www.instagram.com/hamburgue_da_deby/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="bg-gradient-to-br from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white p-2 rounded-full transition-all"
+                      aria-label="Instagram"
+                    >
+                      <FaInstagram className="text-lg" />
                     </a>
                   </div>
                 </div>
