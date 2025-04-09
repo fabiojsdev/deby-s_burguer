@@ -1,52 +1,52 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import { 
-  FaHamburger, 
-  FaBacon, 
-  FaLeaf, 
-  FaGlassCheers, 
-  FaShoppingCart, 
-  FaTimes, 
-  FaSearch, 
-  FaFilter, 
+import { useState, useEffect, useMemo, useCallback } from "react";
+import {
+  FaHamburger,
+  FaBacon,
+  FaLeaf,
+  FaGlassCheers,
+  FaShoppingCart,
+  FaTimes,
+  FaSearch,
+  FaFilter,
   FaWhatsapp,
   FaPlus,
   FaStar,
-  FaFire
-} from 'react-icons/fa';
+  FaFire,
+} from "react-icons/fa";
 
 // Importe suas imagens aqui (ajuste os caminhos conforme necessário)
-import agua from '../assets/images/agua.png';
-import bocaNervosa from '../assets/images/bocanervosa.png';
-import CheioDeFome from '../assets/images/cheiodefome.png';
-import coca from '../assets/images/coca.png';
-import colosso from '../assets/images/colosso.jpg';
-import frango from '../assets/images/frango.jpg';
-import fritasCheddar from '../assets/images/fritasCheddar.jpg';
-import fritasMedia from '../assets/images/fritasMedia.jpg';
-import guarana from '../assets/images/guarana.png';
-import maioverde from '../assets/images/maioVerde.png';
-import tradicional from '../assets/images/tradicional.jpg';
-import BigBurguer from '../assets/images/Bigburguer.jpg';
-import coca2l from '../assets/images/coca2l.webp';
-import guarana2l from '../assets/images/guarana2l.png';
-import combo1 from '../assets/images/combo1.jpg';
-import combo2 from '../assets/images/combo2.jpg';
-import combo3 from '../assets/images/combo3.jpg';
+import agua from "../assets/images/agua.png";
+import bocaNervosa from "../assets/images/bocanervosa.png";
+import CheioDeFome from "../assets/images/cheiodefome.png";
+import coca from "../assets/images/coca.png";
+import colosso from "../assets/images/colosso.jpg";
+import frango from "../assets/images/frango.jpg";
+import fritasCheddar from "../assets/images/fritasCheddar.jpg";
+import fritasMedia from "../assets/images/fritasMedia.jpg";
+import guarana from "../assets/images/guarana.png";
+import maioverde from "../assets/images/maioVerde.png";
+import tradicional from "../assets/images/tradicional.jpg";
+import BigBurguer from "../assets/images/Bigburguer.jpg";
+import coca2l from "../assets/images/coca2l.webp";
+import guarana2l from "../assets/images/guarana2l.png";
+import combo1 from "../assets/images/combo1.jpg";
+import combo2 from "../assets/images/combo2.jpg";
+import combo3 from "../assets/images/combo3.jpg";
 
 // Tipos de categoria para evitar erros de digitação
 const CATEGORIAS = {
-  TODOS: 'todos',
-  COMBOS: 'combos',
-  HAMBURGUERS: 'hamburguers',
-  ACOMPANHAMENTOS: 'acompanhamentos',
-  BEBIDAS: 'bebidas'
+  TODOS: "todos",
+  COMBOS: "combos",
+  HAMBURGUERS: "hamburguers",
+  ACOMPANHAMENTOS: "acompanhamentos",
+  BEBIDAS: "bebidas",
 };
 
 // Função para normalizar texto (remover acentos e converter para minúsculas)
 const normalizarTexto = (texto) => {
   return texto
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase();
 };
 
@@ -55,179 +55,181 @@ const cardapio = [
   // Combos (destaque)
   {
     id: 1,
-    name: 'Combo Família',
-    price: 'R$ 60,00',
-    desc: '3 hamburguers + 2 porções de batata grande + 3 refrigerantes 350ml.',
+    name: "Combo Família",
+    price: "R$ 60,00",
+    desc: "3 hamburguers + 2 porções de batata grande + 3 refrigerantes 350ml.",
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: combo3,
     categoria: CATEGORIAS.COMBOS,
     destaque: true,
-    maisVendido: true
+    maisVendido: true,
   },
   {
     id: 2,
-    name: 'Combo Duplo',
-    price: 'R$ 45,00',
-    desc: '2 hamburguers + 1 porção de batata grande + 2 refrigerantes 350ml.',
+    name: "Combo Duplo",
+    price: "R$ 45,00",
+    desc: "2 hamburguers + 1 porção de batata grande + 2 refrigerantes 350ml.",
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: combo2,
     categoria: CATEGORIAS.COMBOS,
-    maisVendido: true
+    maisVendido: true,
   },
   {
     id: 3,
-    name: 'Combo Individual',
-    price: 'R$ 35,00',
-    desc: '1 hamburguer + 1 batata frita + 1 refrigerante 350ml.',
+    name: "Combo Individual",
+    price: "R$ 35,00",
+    desc: "1 hamburguer + 1 batata frita + 1 refrigerante 350ml.",
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: combo1,
-    categoria: CATEGORIAS.COMBOS
+    categoria: CATEGORIAS.COMBOS,
   },
 
   // Hambúrguers (destaque)
   {
     id: 4,
-    name: 'Cheio de Fome',
-    price: 'R$ 28,00',
-    desc: 'Pão com gergelim, 2 carnes, molho especial, tomate, alface e maionese verde.',
+    name: "Cheio de Fome",
+    price: "R$ 28,00",
+    desc: "Pão com gergelim, 2 carnes, molho especial, tomate, alface e maionese verde.",
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: CheioDeFome,
     categoria: CATEGORIAS.HAMBURGUERS,
-    destaque: true
+    destaque: true,
   },
   {
     id: 5,
-    name: 'Tradicional',
-    price: 'R$ 22,00',
-    desc: 'Pão comum, carne, tomate, alface e maionese verde.',
+    name: "Tradicional",
+    price: "R$ 22,00",
+    desc: "Pão comum, carne, tomate, alface e maionese verde.",
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: tradicional,
-    categoria: CATEGORIAS.HAMBURGUERS
+    categoria: CATEGORIAS.HAMBURGUERS,
   },
   {
     id: 6,
-    name: 'Colosso de Frango',
-    price: 'R$ 30,00',
-    desc: 'Pão francês, frango, picles, tomate, alface e molho especial.',
+    name: "Colosso de Frango",
+    price: "R$ 30,00",
+    desc: "Pão francês, frango, picles, tomate, alface e molho especial.",
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: colosso,
     categoria: CATEGORIAS.HAMBURGUERS,
-    maisVendido: true
+    maisVendido: true,
   },
   {
     id: 7,
-    name: 'Boca Nervosa',
-    price: 'R$ 29,00',
-    desc: 'Pão australiano, carne, molho cheddar, maionese verde e picles.',
+    name: "Boca Nervosa",
+    price: "R$ 29,00",
+    desc: "Pão australiano, carne, molho cheddar, maionese verde e picles.",
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: bocaNervosa,
-    categoria: CATEGORIAS.HAMBURGUERS
+    categoria: CATEGORIAS.HAMBURGUERS,
   },
   {
     id: 8,
-    name: 'Frango Especial',
-    price: 'R$ 23,00',
-    desc: 'Pão com gergelim, frango, cebola caramelizada e molho cheddar.',
+    name: "Frango Especial",
+    price: "R$ 23,00",
+    desc: "Pão com gergelim, frango, cebola caramelizada e molho cheddar.",
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: frango,
-    categoria: CATEGORIAS.HAMBURGUERS
+    categoria: CATEGORIAS.HAMBURGUERS,
   },
   {
     id: 9,
-    name: 'Big Burguer',
-    price: 'R$ 33,00',
-    desc: 'Pão com gergelim, carne, queijo, tomate, alface e molho especial.',
+    name: "Big Burguer",
+    price: "R$ 33,00",
+    desc: "Pão com gergelim, carne, queijo, tomate, alface e molho especial.",
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: BigBurguer,
     categoria: CATEGORIAS.HAMBURGUERS,
-    maisVendido: true
+    maisVendido: true,
   },
 
   // Acompanhamentos
   {
     id: 10,
-    name: 'Batata Média',
-    price: 'R$ 15,00',
-    desc: 'Batata frita crocante, porção média.',
+    name: "Batata Média",
+    price: "R$ 15,00",
+    desc: "Batata frita crocante, porção média.",
     icon: <FaBacon className="text-2xl text-white/80" />,
     image: fritasMedia,
-    categoria: CATEGORIAS.ACOMPANHAMENTOS
+    categoria: CATEGORIAS.ACOMPANHAMENTOS,
   },
   {
     id: 11,
-    name: 'Batata com Bacon e Cheddar',
-    price: 'R$ 25,00',
-    desc: 'Batata frita com bacon crocante e molho cheddar cremoso.',
+    name: "Batata com Bacon e Cheddar",
+    price: "R$ 25,00",
+    desc: "Batata frita com bacon crocante e molho cheddar cremoso.",
     icon: <FaBacon className="text-2xl text-white/80" />,
     image: fritasCheddar,
     categoria: CATEGORIAS.ACOMPANHAMENTOS,
-    maisVendido: true
+    maisVendido: true,
   },
   {
     id: 12,
-    name: 'Maionese Verde (250ml)',
-    price: 'R$ 10,00',
-    desc: 'Maionese verde artesanal para acompanhar seus lanches.',
+    name: "Maionese Verde (250ml)",
+    price: "R$ 10,00",
+    desc: "Maionese verde artesanal para acompanhar seus lanches.",
     icon: <FaLeaf className="text-2xl text-white/80" />,
     image: maioverde,
-    categoria: CATEGORIAS.ACOMPANHAMENTOS
+    categoria: CATEGORIAS.ACOMPANHAMENTOS,
   },
 
   // Bebidas
   {
     id: 13,
-    name: 'Coca-Cola 2L',
-    price: 'R$ 15,00',
-    desc: 'Garrafa 2 litros.',
+    name: "Coca-Cola 2L",
+    price: "R$ 15,00",
+    desc: "Garrafa 2 litros.",
     icon: <FaGlassCheers className="text-2xl text-white/80" />,
     image: coca2l,
-    categoria: CATEGORIAS.BEBIDAS
+    categoria: CATEGORIAS.BEBIDAS,
   },
   {
     id: 14,
-    name: 'Guaraná 2L',
-    price: 'R$ 12,00',
-    desc: 'Garrafa 2 litros.',
+    name: "Guaraná 2L",
+    price: "R$ 12,00",
+    desc: "Garrafa 2 litros.",
     icon: <FaGlassCheers className="text-2xl text-white/80" />,
     image: guarana2l,
-    categoria: CATEGORIAS.BEBIDAS
+    categoria: CATEGORIAS.BEBIDAS,
   },
   {
     id: 15,
-    name: 'Coca-Cola Lata',
-    price: 'R$ 4,00',
-    desc: 'Lata 350ml.',
+    name: "Coca-Cola Lata",
+    price: "R$ 4,00",
+    desc: "Lata 350ml.",
     icon: <FaGlassCheers className="text-2xl text-white/80" />,
     image: coca,
     categoria: CATEGORIAS.BEBIDAS,
-    maisVendido: true
+    maisVendido: true,
   },
   {
     id: 16,
-    name: 'Guaraná Lata',
-    price: 'R$ 3,50',
-    desc: 'Lata 350ml.',
+    name: "Guaraná Lata",
+    price: "R$ 3,50",
+    desc: "Lata 350ml.",
     icon: <FaGlassCheers className="text-2xl text-white/80" />,
     image: guarana,
-    categoria: CATEGORIAS.BEBIDAS
+    categoria: CATEGORIAS.BEBIDAS,
   },
   {
     id: 17,
-    name: 'Água Mineral',
-    price: 'R$ 3,00',
-    desc: 'Garrafa 500ml.',
+    name: "Água Mineral",
+    price: "R$ 3,00",
+    desc: "Garrafa 500ml.",
     icon: <FaGlassCheers className="text-2xl text-white/80" />,
     image: agua,
-    categoria: CATEGORIAS.BEBIDAS
-  }
+    categoria: CATEGORIAS.BEBIDAS,
+  },
 ];
 
 // Componente de Item do Cardápio
 const CardapioItem = ({ item, onAddToCart }) => {
   return (
-    <div 
+    <div
       className={`bg-white/5 rounded-lg border transition-all relative overflow-hidden group ${
-        item.destaque ? 'border-2 border-yellow-400' : 'border-white/10 hover:border-yellow-400/30'
+        item.destaque
+          ? "border-2 border-yellow-400"
+          : "border-white/10 hover:border-yellow-400/30"
       }`}
       aria-labelledby={`item-${item.id}-title`}
     >
@@ -248,7 +250,7 @@ const CardapioItem = ({ item, onAddToCart }) => {
           <img
             src={item.image}
             alt={item.name}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-end p-3">
@@ -256,25 +258,28 @@ const CardapioItem = ({ item, onAddToCart }) => {
           </div>
         </div>
       </div>
-      
+
       <div className="p-4">
         <div className="flex justify-between items-start mb-2">
-          <h4 id={`item-${item.id}-title`} className="font-bold text-white truncate">
+          <h4
+            id={`item-${item.id}-title`}
+            className="font-bold text-white truncate"
+          >
             {item.name}
           </h4>
           <div className="text-white/80" aria-hidden="true">
             {item.icon}
           </div>
         </div>
-        
+
         <div className="flex justify-between items-center">
-          <span className="text-yellow-400 font-bold">
-            {item.price}
-          </span>
+          <span className="text-yellow-400 font-bold">{item.price}</span>
           <button
             onClick={() => onAddToCart(item)}
             className={`px-3 py-1 rounded-full text-xs font-medium transition-all active:scale-95 flex items-center gap-1 ${
-              item.destaque ? 'bg-yellow-400 text-black hover:bg-yellow-500' : 'bg-white/10 text-white hover:bg-white/20'
+              item.destaque
+                ? "bg-yellow-400 text-black hover:bg-yellow-500"
+                : "bg-white/10 text-white hover:bg-white/20"
             }`}
             aria-label={`Adicionar ${item.name} ao carrinho`}
           >
@@ -290,7 +295,7 @@ const CardapioItem = ({ item, onAddToCart }) => {
 export default function Cardapio() {
   const [carrinho, setCarrinho] = useState(() => {
     try {
-      const carrinhoSalvo = localStorage.getItem('carrinho');
+      const carrinhoSalvo = localStorage.getItem("carrinho");
       return carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
     } catch (error) {
       console.error("Erro ao carregar carrinho:", error);
@@ -300,63 +305,77 @@ export default function Cardapio() {
 
   const [carrinhoAberto, setCarrinhoAberto] = useState(false);
   const [categoriaAtiva, setCategoriaAtiva] = useState(CATEGORIAS.COMBOS);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   // Persistência do carrinho
   useEffect(() => {
     try {
-      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
     } catch (error) {
       console.error("Erro ao salvar carrinho:", error);
     }
   }, [carrinho]);
 
   // Funções memoizadas
-  const adicionarAoCarrinho = useCallback((item) => {
-    if (carrinho.length >= 15) {
-      alert('Limite de 15 itens no carrinho atingido!');
-      return;
-    }
-    setCarrinho(prev => [...prev, { ...item, uniqueId: Date.now() }]);
-  }, [carrinho.length]);
+  const adicionarAoCarrinho = useCallback(
+    (item) => {
+      if (carrinho.length >= 15) {
+        alert("Limite de 15 itens no carrinho atingido!");
+        return;
+      }
+      setCarrinho((prev) => [...prev, { ...item, uniqueId: Date.now() }]);
+    },
+    [carrinho.length]
+  );
 
   const removerDoCarrinho = useCallback((uniqueId) => {
-    setCarrinho(prev => prev.filter((item) => item.uniqueId !== uniqueId));
+    setCarrinho((prev) => prev.filter((item) => item.uniqueId !== uniqueId));
   }, []);
 
   const calcularTotal = useCallback(() => {
-    return carrinho.reduce((total, item) => {
-      const preco = parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
-      return total + preco;
-    }, 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    return carrinho
+      .reduce((total, item) => {
+        const preco = parseFloat(
+          item.price.replace("R$ ", "").replace(",", ".")
+        );
+        return total + preco;
+      }, 0)
+      .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
   }, [carrinho]);
 
   const gerarLinkWhatsApp = useCallback(() => {
     if (carrinho.length === 0) {
-      alert('Seu carrinho está vazio! Adicione itens antes de finalizar.');
+      alert("Seu carrinho está vazio! Adicione itens antes de finalizar.");
       return;
     }
 
-    const numeroWhatsApp = '5511949981809'; // Substitua pelo seu número
+    const numeroWhatsApp = "5511949981809"; // Substitua pelo seu número
     const mensagem = `Olá, gostaria de fazer um pedido:\n\n${carrinho
       .map((item) => `➤ ${item.name} - ${item.price}`)
-      .join('\n')}\n\n*Total: ${calcularTotal()}*\n\n*Informações de entrega:*\nNome:\nEndereço:\nReferência:\nForma de Pagamento:`;
-    
-    window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`, '_blank');
+      .join(
+        "\n"
+      )}\n\n*Total: ${calcularTotal()}*\n\n*Informações de entrega:*\nNome:\nEndereço:\nReferência:\nForma de Pagamento:`;
+
+    window.open(
+      `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`,
+      "_blank"
+    );
   }, [carrinho, calcularTotal]);
 
   // Filtros otimizados
   const itensFiltrados = useMemo(() => {
-    let filtrados = categoriaAtiva === CATEGORIAS.TODOS 
-      ? cardapio 
-      : cardapio.filter(item => item.categoria === categoriaAtiva);
+    let filtrados =
+      categoriaAtiva === CATEGORIAS.TODOS
+        ? cardapio
+        : cardapio.filter((item) => item.categoria === categoriaAtiva);
 
     if (searchTerm) {
       const termoNormalizado = normalizarTexto(searchTerm);
-      filtrados = filtrados.filter(item =>
-        normalizarTexto(item.name).includes(termoNormalizado) ||
-        normalizarTexto(item.desc).includes(termoNormalizado)
+      filtrados = filtrados.filter(
+        (item) =>
+          normalizarTexto(item.name).includes(termoNormalizado) ||
+          normalizarTexto(item.desc).includes(termoNormalizado)
       );
     }
 
@@ -364,22 +383,31 @@ export default function Cardapio() {
   }, [categoriaAtiva, searchTerm]);
 
   const limparFiltros = useCallback(() => {
-    setSearchTerm('');
+    setSearchTerm("");
     setCategoriaAtiva(CATEGORIAS.TODOS);
   }, []);
 
   // Itens em destaque
-  const destaques = useMemo(() => 
-    cardapio.filter(item => item.destaque), []);
+  const destaques = useMemo(() => cardapio.filter((item) => item.destaque), []);
 
   return (
-    <section id="cardapio" className="py-12 bg-gradient-to-b from-black to-black/90">
+    <section
+      id="cardapio"
+      className="py-12 bg-gradient-to-b from-black to-black/90"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center">
         {/* Título Principal */}
         <header className="w-full text-center mb-8">
-          <h2 className="text-3xl font-bold text-yellow-400 mb-1">Cardápio Digital</h2>
-          <p className="text-white/70 text-sm">Selecione seus itens favoritos</p>
-          <div className="w-20 h-0.5 bg-yellow-400 mx-auto mt-2" aria-hidden="true"></div>
+          <h2 className="text-3xl font-bold text-yellow-400 mb-1">
+            Cardápio Digital
+          </h2>
+          <p className="text-white/70 text-sm">
+            Selecione seus itens favoritos
+          </p>
+          <div
+            className="w-20 h-0.5 bg-yellow-400 mx-auto mt-2"
+            aria-hidden="true"
+          ></div>
         </header>
 
         {/* Destaques */}
@@ -390,8 +418,8 @@ export default function Cardapio() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {destaques.map((item) => (
-                <CardapioItem 
-                  key={`destaque-${item.id}`} 
+                <CardapioItem
+                  key={`destaque-${item.id}`}
                   item={item}
                   onAddToCart={adicionarAoCarrinho}
                 />
@@ -403,7 +431,9 @@ export default function Cardapio() {
         {/* Barra de Pesquisa e Filtros */}
         <div className="w-full mb-6">
           <div className="relative max-w-xl mx-auto">
-            <label htmlFor="search-input" className="sr-only">Buscar item</label>
+            <label htmlFor="search-input" className="sr-only">
+              Buscar item
+            </label>
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <FaSearch className="text-gray-400 text-sm" />
             </div>
@@ -416,7 +446,7 @@ export default function Cardapio() {
               onChange={(e) => setSearchTerm(e.target.value)}
               aria-label="Buscar itens no cardápio"
             />
-            <button 
+            <button
               onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
               className="md:hidden absolute right-2 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white text-sm"
               aria-label="Filtrar itens"
@@ -428,23 +458,32 @@ export default function Cardapio() {
         </div>
 
         {/* Filtros por Categoria */}
-        <nav className={`${mobileFiltersOpen ? 'block' : 'hidden'} md:block w-full mb-8`}>
+        <nav
+          className={`${
+            mobileFiltersOpen ? "block" : "hidden"
+          } md:block w-full mb-8`}
+        >
           <div className="flex flex-wrap justify-center gap-2">
-            {[CATEGORIAS.COMBOS, CATEGORIAS.HAMBURGUERS, CATEGORIAS.ACOMPANHAMENTOS, CATEGORIAS.BEBIDAS].map((categoria) => (
+            {[
+              CATEGORIAS.COMBOS,
+              CATEGORIAS.HAMBURGUERS,
+              CATEGORIAS.ACOMPANHAMENTOS,
+              CATEGORIAS.BEBIDAS,
+            ].map((categoria) => (
               <button
                 key={categoria}
                 onClick={() => setCategoriaAtiva(categoria)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  categoriaAtiva === categoria 
-                    ? 'bg-yellow-400 text-black shadow-md' 
-                    : 'bg-white/10 text-white hover:bg-white/20'
+                  categoriaAtiva === categoria
+                    ? "bg-yellow-400 text-black shadow-md"
+                    : "bg-white/10 text-white hover:bg-white/20"
                 }`}
-                aria-current={categoriaAtiva === categoria ? 'page' : undefined}
+                aria-current={categoriaAtiva === categoria ? "page" : undefined}
               >
-                {categoria === CATEGORIAS.COMBOS && 'Combos'}
-                {categoria === CATEGORIAS.HAMBURGUERS && 'Hambúrguers'}
-                {categoria === CATEGORIAS.ACOMPANHAMENTOS && 'Acompanhamentos'}
-                {categoria === CATEGORIAS.BEBIDAS && 'Bebidas'}
+                {categoria === CATEGORIAS.COMBOS && "Combos"}
+                {categoria === CATEGORIAS.HAMBURGUERS && "Hambúrguers"}
+                {categoria === CATEGORIAS.ACOMPANHAMENTOS && "Acompanhamentos"}
+                {categoria === CATEGORIAS.BEBIDAS && "Bebidas"}
               </button>
             ))}
           </div>
@@ -466,8 +505,8 @@ export default function Cardapio() {
         {/* Grid de Itens do Cardápio */}
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {itensFiltrados.map((item) => (
-            <CardapioItem 
-              key={item.id} 
+            <CardapioItem
+              key={item.id}
               item={item}
               onAddToCart={adicionarAoCarrinho}
             />
@@ -482,7 +521,7 @@ export default function Cardapio() {
             <div className="p-4 flex-grow overflow-hidden flex flex-col">
               <div className="flex items-center justify-between mb-4 border-b border-white/10 pb-2">
                 <h4 className="text-base font-bold text-white flex items-center gap-1">
-                  <FaShoppingCart className="text-yellow-400 text-sm" /> 
+                  <FaShoppingCart className="text-yellow-400 text-sm" />
                   <span>Meu Pedido</span>
                   {carrinho.length > 0 && (
                     <span className="bg-yellow-400 text-black text-xs font-bold rounded-full px-1.5 py-0.5 ml-1">
@@ -503,10 +542,17 @@ export default function Cardapio() {
                 <>
                   <div className="flex-grow overflow-y-auto mb-4 space-y-2 pr-1">
                     {carrinho.map((item) => (
-                      <div key={item.uniqueId} className="flex items-center justify-between gap-2 bg-white/5 p-2 rounded-md">
+                      <div
+                        key={item.uniqueId}
+                        className="flex items-center justify-between gap-2 bg-white/5 p-2 rounded-md"
+                      >
                         <div className="flex-1 min-w-0">
-                          <p className="text-white text-sm font-medium truncate">{item.name}</p>
-                          <p className="text-yellow-400 text-xs">{item.price}</p>
+                          <p className="text-white text-sm font-medium truncate">
+                            {item.name}
+                          </p>
+                          <p className="text-yellow-400 text-xs">
+                            {item.price}
+                          </p>
                         </div>
                         <button
                           onClick={() => removerDoCarrinho(item.uniqueId)}
@@ -544,7 +590,9 @@ export default function Cardapio() {
                 </>
               ) : (
                 <div className="text-center py-6 flex-grow flex flex-col justify-center">
-                  <p className="text-white/70 text-sm mb-3">Seu carrinho está vazio</p>
+                  <p className="text-white/70 text-sm mb-3">
+                    Seu carrinho está vazio
+                  </p>
                   <button
                     onClick={() => setCarrinhoAberto(false)}
                     className="text-yellow-400 hover:text-yellow-300 transition text-xs font-medium"
