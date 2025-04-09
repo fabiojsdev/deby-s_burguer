@@ -10,8 +10,7 @@ import {
   FaFilter,
   FaWhatsapp,
   FaPlus,
-  FaStar,
-  FaFire,
+  FaTrash,
 } from "react-icons/fa";
 
 // Importe suas imagens aqui (ajuste os caminhos conforme necessário)
@@ -50,9 +49,9 @@ const normalizarTexto = (texto) => {
     .toLowerCase();
 };
 
-// Dados do cardápio com destaques
+// Dados do cardápio
 const cardapio = [
-  // Combos (destaque)
+  // Combos
   {
     id: 1,
     name: "Combo Família",
@@ -61,8 +60,6 @@ const cardapio = [
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: combo3,
     categoria: CATEGORIAS.COMBOS,
-    destaque: true,
-    maisVendido: true,
   },
   {
     id: 2,
@@ -72,7 +69,6 @@ const cardapio = [
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: combo2,
     categoria: CATEGORIAS.COMBOS,
-    maisVendido: true,
   },
   {
     id: 3,
@@ -84,7 +80,7 @@ const cardapio = [
     categoria: CATEGORIAS.COMBOS,
   },
 
-  // Hambúrguers (destaque)
+  // Hambúrguers
   {
     id: 4,
     name: "Cheio de Fome",
@@ -93,7 +89,6 @@ const cardapio = [
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: CheioDeFome,
     categoria: CATEGORIAS.HAMBURGUERS,
-    destaque: true,
   },
   {
     id: 5,
@@ -112,7 +107,6 @@ const cardapio = [
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: colosso,
     categoria: CATEGORIAS.HAMBURGUERS,
-    maisVendido: true,
   },
   {
     id: 7,
@@ -140,7 +134,6 @@ const cardapio = [
     icon: <FaHamburger className="text-2xl text-white/80" />,
     image: BigBurguer,
     categoria: CATEGORIAS.HAMBURGUERS,
-    maisVendido: true,
   },
 
   // Acompanhamentos
@@ -161,7 +154,6 @@ const cardapio = [
     icon: <FaBacon className="text-2xl text-white/80" />,
     image: fritasCheddar,
     categoria: CATEGORIAS.ACOMPANHAMENTOS,
-    maisVendido: true,
   },
   {
     id: 12,
@@ -200,7 +192,6 @@ const cardapio = [
     icon: <FaGlassCheers className="text-2xl text-white/80" />,
     image: coca,
     categoria: CATEGORIAS.BEBIDAS,
-    maisVendido: true,
   },
   {
     id: 16,
@@ -223,28 +214,12 @@ const cardapio = [
 ];
 
 // Componente de Item do Cardápio
-const CardapioItem = ({ item, onAddToCart }) => {
+const CardapioItem = ({ item, onAddToCart, canAddToCart }) => {
   return (
     <div
-      className={`bg-white/5 rounded-lg border transition-all relative overflow-hidden group ${
-        item.destaque
-          ? "border-2 border-yellow-400"
-          : "border-white/10 hover:border-yellow-400/30"
-      }`}
+      className="bg-white/5 rounded-lg border border-white/10 hover:border-yellow-400/30 transition-all relative overflow-hidden group cursor-pointer"
       aria-labelledby={`item-${item.id}-title`}
     >
-      {/* Badges de destaque */}
-      {item.destaque && (
-        <div className="absolute top-2 left-2 bg-yellow-400 text-black px-2 py-1 rounded-full text-xs font-bold z-10 flex items-center gap-1">
-          <FaStar size={10} /> Destaque
-        </div>
-      )}
-      {item.maisVendido && !item.destaque && (
-        <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold z-10 flex items-center gap-1">
-          <FaFire size={10} /> Mais Vendido
-        </div>
-      )}
-
       <div className="relative pt-[100%]">
         <div className="absolute inset-0 flex items-center justify-center bg-black/10 overflow-hidden">
           <img
@@ -276,10 +251,11 @@ const CardapioItem = ({ item, onAddToCart }) => {
           <span className="text-yellow-400 font-bold">{item.price}</span>
           <button
             onClick={() => onAddToCart(item)}
+            disabled={!canAddToCart}
             className={`px-3 py-1 rounded-full text-xs font-medium transition-all active:scale-95 flex items-center gap-1 ${
-              item.destaque
-                ? "bg-yellow-400 text-black hover:bg-yellow-500"
-                : "bg-white/10 text-white hover:bg-white/20"
+              canAddToCart
+                ? "bg-yellow-400 text-black hover:bg-yellow-500 cursor-pointer"
+                : "bg-gray-500 text-gray-300 cursor-not-allowed"
             }`}
             aria-label={`Adicionar ${item.name} ao carrinho`}
           >
@@ -317,20 +293,44 @@ export default function Cardapio() {
     }
   }, [carrinho]);
 
+  // Agrupa itens iguais no carrinho
+  const carrinhoAgrupado = useMemo(() => {
+    const agrupado = {};
+    carrinho.forEach((item) => {
+      const key = `${item.id}-${item.price}`;
+      if (!agrupado[key]) {
+        agrupado[key] = { ...item, quantidade: 1 };
+      } else {
+        agrupado[key].quantidade += 1;
+      }
+    });
+    return Object.values(agrupado);
+  }, [carrinho]);
+
   // Funções memoizadas
   const adicionarAoCarrinho = useCallback(
     (item) => {
-      if (carrinho.length >= 15) {
-        alert("Limite de 15 itens no carrinho atingido!");
-        return;
-      }
+      if (carrinho.length >= 15) return;
+
       setCarrinho((prev) => [...prev, { ...item, uniqueId: Date.now() }]);
     },
     [carrinho.length]
   );
 
-  const removerDoCarrinho = useCallback((uniqueId) => {
-    setCarrinho((prev) => prev.filter((item) => item.uniqueId !== uniqueId));
+  const removerDoCarrinho = useCallback((id) => {
+    setCarrinho((prev) => {
+      const index = prev.findIndex((item) => item.id === id);
+      if (index !== -1) {
+        const newCart = [...prev];
+        newCart.splice(index, 1);
+        return newCart;
+      }
+      return prev;
+    });
+  }, []);
+
+  const limparCarrinho = useCallback(() => {
+    setCarrinho([]);
   }, []);
 
   const calcularTotal = useCallback(() => {
@@ -351,8 +351,8 @@ export default function Cardapio() {
     }
 
     const numeroWhatsApp = "5511949981809"; // Substitua pelo seu número
-    const mensagem = `Olá, gostaria de fazer um pedido:\n\n${carrinho
-      .map((item) => `➤ ${item.name} - ${item.price}`)
+    const mensagem = `Olá, gostaria de fazer um pedido:\n\n${carrinhoAgrupado
+      .map((item) => `➤ ${item.name} - ${item.quantidade}x ${item.price}`)
       .join(
         "\n"
       )}\n\n*Total: ${calcularTotal()}*\n\n*Informações de entrega:*\nNome:\nEndereço:\nReferência:\nForma de Pagamento:`;
@@ -361,15 +361,18 @@ export default function Cardapio() {
       `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`,
       "_blank"
     );
-  }, [carrinho, calcularTotal]);
+  }, [carrinho, calcularTotal, carrinhoAgrupado]);
 
-  // Filtros otimizados
+  // Filtros otimizados - busca independente dos filtros
   const itensFiltrados = useMemo(() => {
-    let filtrados =
-      categoriaAtiva === CATEGORIAS.TODOS
-        ? cardapio
-        : cardapio.filter((item) => item.categoria === categoriaAtiva);
+    let filtrados = cardapio;
 
+    // Aplica filtro de categoria se não estiver em "todos"
+    if (categoriaAtiva !== CATEGORIAS.TODOS) {
+      filtrados = filtrados.filter((item) => item.categoria === categoriaAtiva);
+    }
+
+    // Aplica busca se houver termo
     if (searchTerm) {
       const termoNormalizado = normalizarTexto(searchTerm);
       filtrados = filtrados.filter(
@@ -387,20 +390,15 @@ export default function Cardapio() {
     setCategoriaAtiva(CATEGORIAS.TODOS);
   }, []);
 
-  // Itens em destaque
-  const destaques = useMemo(() => cardapio.filter((item) => item.destaque), []);
-
   return (
     <section
       id="cardapio"
-      className="py-12 bg-gradient-to-b from-black to-black/90"
+      className="py-12 bg-gradient-to-b from-black to-black/90 min-h-screen"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center">
         {/* Título Principal */}
         <header className="w-full text-center mb-8">
-          <h2 className="text-3xl font-bold text-yellow-400 mb-1">
-            Cardápio Digital
-          </h2>
+          <h2 className="text-3xl font-bold text-yellow-400 mb-1">Cardápio</h2>
           <p className="text-white/70 text-sm">
             Selecione seus itens favoritos
           </p>
@@ -409,24 +407,6 @@ export default function Cardapio() {
             aria-hidden="true"
           ></div>
         </header>
-
-        {/* Destaques */}
-        {destaques.length > 0 && (
-          <div className="w-full mb-8">
-            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <FaStar className="text-yellow-400" /> Destaques
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {destaques.map((item) => (
-                <CardapioItem
-                  key={`destaque-${item.id}`}
-                  item={item}
-                  onAddToCart={adicionarAoCarrinho}
-                />
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* Barra de Pesquisa e Filtros */}
         <div className="w-full mb-6">
@@ -441,11 +421,20 @@ export default function Cardapio() {
               id="search-input"
               type="text"
               placeholder="Buscar item (ex: agua, hamburguer, coca)..."
-              className="block w-full pl-9 pr-3 py-2 text-sm bg-white/10 border border-white/20 rounded-full text-white placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-yellow-400 focus:border-transparent"
+              className="block w-full pl-9 pr-10 py-2 text-sm bg-white/10 border border-white/20 rounded-full text-white placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-yellow-400 focus:border-transparent"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               aria-label="Buscar itens no cardápio"
             />
+            {(searchTerm || categoriaAtiva !== CATEGORIAS.TODOS) && (
+              <button
+                onClick={limparFiltros}
+                className="absolute right-10 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white text-sm"
+                aria-label="Limpar filtros"
+              >
+                <FaTimes />
+              </button>
+            )}
             <button
               onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
               className="md:hidden absolute right-2 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white text-sm"
@@ -465,6 +454,7 @@ export default function Cardapio() {
         >
           <div className="flex flex-wrap justify-center gap-2">
             {[
+              CATEGORIAS.TODOS,
               CATEGORIAS.COMBOS,
               CATEGORIAS.HAMBURGUERS,
               CATEGORIAS.ACOMPANHAMENTOS,
@@ -473,13 +463,14 @@ export default function Cardapio() {
               <button
                 key={categoria}
                 onClick={() => setCategoriaAtiva(categoria)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
                   categoriaAtiva === categoria
-                    ? "bg-yellow-400 text-black shadow-md"
+                    ? "bg-yellow-400 text-black shadow-md hover:bg-yellow-500"
                     : "bg-white/10 text-white hover:bg-white/20"
                 }`}
                 aria-current={categoriaAtiva === categoria ? "page" : undefined}
               >
+                {categoria === CATEGORIAS.TODOS && "Todos"}
                 {categoria === CATEGORIAS.COMBOS && "Combos"}
                 {categoria === CATEGORIAS.HAMBURGUERS && "Hambúrguers"}
                 {categoria === CATEGORIAS.ACOMPANHAMENTOS && "Acompanhamentos"}
@@ -495,7 +486,7 @@ export default function Cardapio() {
             <p className="text-white/70 text-lg mb-3">Nenhum item encontrado</p>
             <button
               onClick={limparFiltros}
-              className="text-yellow-400 hover:text-yellow-300 text-xs font-medium"
+              className="text-yellow-400 hover:text-yellow-300 transition text-xs font-medium"
             >
               Limpar filtros
             </button>
@@ -509,6 +500,7 @@ export default function Cardapio() {
               key={item.id}
               item={item}
               onAddToCart={adicionarAoCarrinho}
+              canAddToCart={carrinho.length < 15}
             />
           ))}
         </div>
@@ -529,33 +521,44 @@ export default function Cardapio() {
                     </span>
                   )}
                 </h4>
-                <button
-                  onClick={() => setCarrinhoAberto(false)}
-                  className="text-white/70 hover:text-white transition text-sm"
-                  aria-label="Fechar carrinho"
-                >
-                  <FaTimes />
-                </button>
+                <div className="flex gap-2">
+                  {carrinho.length > 0 && (
+                    <button
+                      onClick={limparCarrinho}
+                      className="text-red-400 hover:text-red-300 transition text-sm flex items-center gap-1"
+                      aria-label="Limpar carrinho"
+                    >
+                      <FaTrash size={12} />
+                    </button>
+                  )}
+                  <button
+                    onClick={() => setCarrinhoAberto(false)}
+                    className="text-white/70 hover:text-white transition text-sm"
+                    aria-label="Fechar carrinho"
+                  >
+                    <FaTimes />
+                  </button>
+                </div>
               </div>
 
               {carrinho.length > 0 ? (
                 <>
                   <div className="flex-grow overflow-y-auto mb-4 space-y-2 pr-1">
-                    {carrinho.map((item) => (
+                    {carrinhoAgrupado.map((item) => (
                       <div
-                        key={item.uniqueId}
+                        key={`${item.id}-${item.price}`}
                         className="flex items-center justify-between gap-2 bg-white/5 p-2 rounded-md"
                       >
                         <div className="flex-1 min-w-0">
                           <p className="text-white text-sm font-medium truncate">
-                            {item.name}
+                            {item.name} - {item.quantidade}x
                           </p>
                           <p className="text-yellow-400 text-xs">
                             {item.price}
                           </p>
                         </div>
                         <button
-                          onClick={() => removerDoCarrinho(item.uniqueId)}
+                          onClick={() => removerDoCarrinho(item.id)}
                           className="text-red-400 hover:text-red-300 transition text-xs p-1"
                           aria-label={`Remover ${item.name} do carrinho`}
                         >
@@ -606,7 +609,7 @@ export default function Cardapio() {
         ) : (
           <button
             onClick={() => setCarrinhoAberto(true)}
-            className="bg-yellow-400 hover:bg-yellow-500 text-black p-4 rounded-full transition-all relative shadow-lg active:scale-95"
+            className="bg-yellow-400 hover:bg-yellow-500 text-black p-4 rounded-full transition-all relative shadow-lg active:scale-95 cursor-pointer"
             aria-label={`Abrir carrinho (${carrinho.length} itens)`}
           >
             <FaShoppingCart className="text-lg" />
