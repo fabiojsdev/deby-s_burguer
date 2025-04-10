@@ -136,7 +136,7 @@ export default function Navbar() {
               <FaWhatsapp />
             </a>
             <a 
-              href="https://instagram.com/seuinstagram" 
+              href="https://www.instagram.com/hamburgue_da_deby/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-white hover:text-pink-500 transition-colors duration-300 text-2xl"
